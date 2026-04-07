@@ -14,6 +14,7 @@ struct SimilarityView: View {
             Button("Still None") {
                 
             }.disabled(true).background(Color.green).foregroundColor(.white)
+            Spacer()
             HStack {
                 Button(action: {
                     print("Chevron Left Tapped")
@@ -28,6 +29,7 @@ struct SimilarityView: View {
                     Image(systemName: "chevron.right").foregroundColor(.black)
                 }
             }
+            Spacer()
             Button("Reset Intrests") {
                 
             }
