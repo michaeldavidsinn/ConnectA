@@ -8,78 +8,71 @@
 import SwiftUI
 
 struct OpenedQuestionView: View {
-
     let questionText = "Did you grow up around here, or somewhere completely different?"
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        ZStack {
-           
-            Color(uiColor: .systemGroupedBackground)
-                .ignoresSafeArea()
-            
-            VStack {
-        
-                HStack {
+        NavigationStack {
+            ZStack {
+                Color(uiColor: .systemGroupedBackground)
+                    .ignoresSafeArea()
+                
+                VStack {
+                    
+                    Spacer()
+                    ZStack {
+                        
+                        Image("OpenEnvelope")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 270)
+                            .offset(y: -40)
+                        
+                        VStack {
+                            Text(questionText)
+                                .font(.system(size: 22, weight: .medium, design: .rounded))
+                                .multilineTextAlignment(.center)
+                                .padding(40)
+                        }
+                        .frame(width: 320, height: 220)
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .shadow(color: .black.opacity(0.1), radius: 15)
+                        .offset(y: -30)
+                    }
+                    
+                    
+                    Spacer()
+                    
                     Button(action: {
                         
                     }) {
+                        Text("Next")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(Color.blue)
+                            .clipShape(Capsule())
+                            .cornerRadius(14)
+                    }
+                    .padding(.horizontal, 40)
+                    .padding(.bottom, 30)
+                }
+            }
+            // TOOLBAR DEFAULT
+            .navigationTitle("Get to Know the Basics")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
                         Image(systemName: "chevron.left")
-                            .font(.title3)
                             .fontWeight(.semibold)
-                            .foregroundColor(.gray)
                     }
-                    
-                    Spacer()
-                    
-                    Text("Get to Know the Basics")
-                        .font(.system(size: 18, weight: .bold))
-                    
-                    Spacer()
-                    
-                    Image(systemName: "chevron.left").opacity(0)
                 }
-                .padding(.horizontal)
-                
-                Spacer()
-                
-                ZStack {
-                    
-                    Image("OpenEnvelope")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 320)
-                        .opacity(0.4)
-                    
-                    // Question Card
-                    VStack {
-                        Text(questionText)
-                            .font(.system(size: 22, weight: .medium, design: .rounded))
-                            .multilineTextAlignment(.center)
-                            .padding(40)
-                    }
-                    .frame(width: 300, height: 220)
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .shadow(color: Color.black.opacity(0.1), radius: 15, x: 0, y: 10)
-                    .offset(y: -40)
-                }
-                
-                Spacer()
-                
-                
-                Button(action: {
-
-                }) {
-                    Text("Next")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(Color.blue)
-                        .cornerRadius(15)
-                }
-                .padding(.horizontal, 40)
-                .padding(.bottom, 30)
             }
         }
     }
