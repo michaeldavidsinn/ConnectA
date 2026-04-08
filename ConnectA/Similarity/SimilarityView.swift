@@ -10,10 +10,17 @@ import SwiftUI
 struct SimilarityView: View {
     var body: some View {
         VStack {
-            Text("Your Similarities are...").bold()
+            
+            //Subtitle
+            Text("Your Similarities are...").font(.title2)
+                .fontWeight(.bold)
+                .padding(.top, 40)
+            
+            //Button change selected tags
             Button("Still None") {
                 
-            }.disabled(true).background(Color.green).foregroundColor(.white)
+            }
+
             Spacer()
             HStack {
                 Button(action: {
@@ -33,6 +40,7 @@ struct SimilarityView: View {
             Button("Reset Intrests") {
                 
             }
+
         }
         .padding()
     }
