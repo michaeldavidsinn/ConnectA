@@ -14,13 +14,34 @@
 // 3. Find and fix all 3 errors using the error messages
 
 import SwiftUI
+
+struct TagView: View {
+    let tagName: String
+    var body: some View {
+        Text(tagName)
+            .font(.caption)
+            .fontWeight(.medium)
+            .padding(.horizontal, 7)
+            .padding(.vertical, 9)
+            .foregroundColor(.black) // Padding vertikal untuk tinggi
+            .background(Color.white)
+            .cornerRadius(15)        // Sudut tumpul agar berbentuk tag
+            .glassEffect()
+    }
+}
     
 struct BrokenView: View {
+        let tags = ["Animal", "Arts ", "Beverage", "Blind Box", "Book", "Carrer", "Cars", "Exercise", "Fashion", "Food", "Invesment", "Movie", "Music", "Social Media", "Sports", "Studies", "Technology", "Travel","TV Show", "Video Game"]
         
         var body: some View {
             VStack {
                 NavigationStack {
-                    Text("tes")
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 10) {
+                            ForEach(tags, id: \.self) { tag in
+                                TagView(tagName: tag)
+                            }
+                        }
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Image(systemName: "chevron.left")
@@ -49,6 +70,7 @@ struct BrokenView: View {
                 }
             }
         }
+    }
 
 
 #Preview {
