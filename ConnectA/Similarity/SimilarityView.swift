@@ -19,7 +19,7 @@ struct SimilarityView: View {
             
             //Button change selected tags
             Button(action: {
-                
+                showModal = true
             }) {
                 Text("Still None...").foregroundColor(.white)
                     .padding(.horizontal, 30)
@@ -27,7 +27,7 @@ struct SimilarityView: View {
                         Color.gray
                     )
                     .clipShape(Capsule())
-                .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)}.disabled(true)
+                .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)}.disabled(false)
             
             Spacer()
             
@@ -63,7 +63,7 @@ struct SimilarityView: View {
             
             //Button Reset Similarity
             Button(action: {
-                showModal = true
+
             }) {
                 Text("Reset Interests")
                     .font(.headline)
