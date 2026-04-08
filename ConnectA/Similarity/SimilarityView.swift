@@ -19,7 +19,13 @@ struct SimilarityView: View {
             //Button change selected tags
             Button("Still None") {
                 
-            }
+            }.disabled(true).foregroundColor(.white)
+                .padding(.horizontal, 30)
+                .padding(.vertical, 12).background(
+                    Color.gray
+            )
+            .clipShape(Capsule())
+            .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
 
             Spacer()
             HStack {
