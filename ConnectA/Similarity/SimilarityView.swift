@@ -60,13 +60,14 @@ struct SimilarityView: View {
             
             Spacer()
             
+            //Button Reset Similarity
             Button(action: {
                 
             }) {
                 Text("Reset Interests")
                     .font(.headline)
                     .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 30)
                     .padding(.vertical, 16)
                     .overlay(
                         RoundedRectangle(cornerRadius: 30)
