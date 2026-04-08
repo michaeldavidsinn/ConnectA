@@ -17,15 +17,16 @@ struct SimilarityView: View {
                 .padding(.top, 40)
             
             //Button change selected tags
-            Button("Still None") {
+            Button(action: {
                 
-            }.disabled(true).foregroundColor(.white)
-                .padding(.horizontal, 30)
-                .padding(.vertical, 12).background(
-                    Color.gray
-                )
-                .clipShape(Capsule())
-                .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
+            }) {
+                Text("Still None...").foregroundColor(.white)
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 12).background(
+                        Color.gray
+                    )
+                    .clipShape(Capsule())
+                .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)}.disabled(true)
             
             Spacer()
             
@@ -59,9 +60,22 @@ struct SimilarityView: View {
             
             Spacer()
             
-            Button("Reset Intrests") {
+            Button(action: {
                 
+            }) {
+                Text("Reset Interests")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 30)
+                            .stroke(Color.blue, lineWidth: 1.5)
+                    )
             }
+            .padding(.horizontal)
+            .padding(.bottom, 20)
+            
             
         }
         .padding()
