@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SimilarityView: View {
+    @State private var showModal = false
     var body: some View {
         VStack {
             
@@ -62,7 +63,7 @@ struct SimilarityView: View {
             
             //Button Reset Similarity
             Button(action: {
-                
+                showModal = true
             }) {
                 Text("Reset Interests")
                     .font(.headline)
@@ -80,6 +81,9 @@ struct SimilarityView: View {
             
         }
         .padding()
+        .sheet(isPresented: $showModal) {
+            SimilarityModalView()
+        }
     }
 }
 
