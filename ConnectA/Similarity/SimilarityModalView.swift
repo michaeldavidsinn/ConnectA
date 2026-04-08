@@ -11,7 +11,6 @@ struct SimilarityModalView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    // Data jadi array
     let tags: [String] = ["Arts and Crafts", "Fashion", "TV Show","LALLALALA", "lol","OIOIOIOIOIOIOIO"]
     
     let columns = [
@@ -20,49 +19,112 @@ struct SimilarityModalView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            // TODO: Add (X) Button
+            
+            // Exit Button
             HStack {
                 Button(action: {
                     dismiss()
                 }) {
-                    Image(systemName: "xmark.circle.fill")
+                    Image(systemName: "xmark.circle")
                         .font(.title2)
                         .foregroundColor(.black)
                 }
                 Spacer()
             }
-            .padding(.horizontal)           }
-        // TODO: Add Tag Buttons
-        LazyVGrid(columns: columns, alignment: .leading, spacing: 12) {
-            ForEach(tags, id: \.self) { tag in
-                TagButton(title: tag)
+            .padding(.horizontal)
+            
+            // Tag Buttons
+            TagsLayout(spacing: 10) {
+                ForEach(tags, id: \.self) { tag in
+                    TagButton(title: tag){
+                        dismiss()
+                    }
+                }
             }
+            .padding(.horizontal)
+            
+            Spacer()
         }
-        .padding(.horizontal)
-        Spacer()
-        
-            .presentationDetents([.medium])
+        .presentationDetents([.medium])
     }}
 
 
 struct TagButton: View {
     let title: String
+    let onTap: () -> Void
     
     var body: some View {
-        Text(title)
-            .font(.system(size: 16, weight: .medium))
-            .foregroundColor(.white)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 16)
-            .background(
-                LinearGradient(
-                    colors: [Color.blue, Color.blue.opacity(0.8)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+        Button(action: {
+            print("\(title) tapped")
+            onTap()
+        }) {
+            Text(title)
+                .font(.system(size: 16, weight: .medium))
+                .foregroundColor(.white)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 16)
+                .background(
+                    LinearGradient(
+                        colors: [Color.blue, Color.blue.opacity(0.8)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
                 )
+                .cornerRadius(20)
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+struct TagsLayout: Layout {
+    
+    var spacing: CGFloat = 10
+    
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize { // Dipanggil auto oleh swiftui
+        let maxWidth = proposal.width ?? 0
+        
+        var x: CGFloat = 0
+        var y: CGFloat = 0
+        var rowHeight: CGFloat = 0
+        
+        for view in subviews {
+            let size = view.sizeThatFits(.unspecified)
+            
+            if x + size.width > maxWidth {
+                x = 0
+                y += rowHeight + spacing
+                rowHeight = 0
+            }
+            
+            rowHeight = max(rowHeight, size.height)
+            x += size.width + spacing
+        }
+        
+        return CGSize(width: maxWidth, height: y + rowHeight)
+    }
+    
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) { // Dipanggil auto oleh swiftui
+        var x = bounds.minX
+        var y = bounds.minY
+        var rowHeight: CGFloat = 0
+        
+        for view in subviews {
+            let size = view.sizeThatFits(.unspecified)
+            
+            if x + size.width > bounds.maxX {
+                x = bounds.minX
+                y += rowHeight + spacing
+                rowHeight = 0
+            }
+            
+            view.place(
+                at: CGPoint(x: x, y: y),
+                proposal: ProposedViewSize(size)
             )
-            .cornerRadius(20)
-            .fixedSize() // biar width sesuai konten
+            
+            rowHeight = max(rowHeight, size.height)
+            x += size.width + spacing
+        }
     }
 }
 
