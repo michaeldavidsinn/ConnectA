@@ -25,13 +25,20 @@ struct SimilarityModalView: View {
                 Button(action: {
                     dismiss()
                 }) {
-                    Image(systemName: "xmark.circle")
-                        .font(.title2)
+                    Image(systemName: "xmark")
+                        .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.black)
+                        .frame(width: 36, height: 36)
+                        .background(
+                            Circle()
+                                .fill(Color.gray.opacity(0.15))
+                        )
                 }
+                
                 Spacer()
             }
             .padding(.horizontal)
+            .padding(.top, 10)
             
             // Tag Buttons
             TagsLayout(spacing: 10) {
