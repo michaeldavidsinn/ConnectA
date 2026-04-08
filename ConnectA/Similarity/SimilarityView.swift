@@ -36,7 +36,7 @@ struct SimilarityView: View {
                 Button(action: {
                     print("Chevron Left Tapped")
                 }) {
-                    Image(systemName: "chevron.left").foregroundColor(.black)
+                    Image(systemName: "chevron.left").foregroundColor(.gray)
                 }.disabled(true)
                 
                 //Question card
@@ -54,7 +54,7 @@ struct SimilarityView: View {
                 Button(action: {
                     print("Chevron Right Tapped")
                 }) {
-                    Image(systemName: "chevron.right").foregroundColor(.black)
+                    Image(systemName: "chevron.right").foregroundColor(.gray)
                 }.disabled(true)
             }
             
