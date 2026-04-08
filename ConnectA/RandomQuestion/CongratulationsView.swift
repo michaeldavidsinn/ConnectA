@@ -15,8 +15,7 @@ struct CongratulationsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.white
-                    .ignoresSafeArea()
+                
                 
                 VStack(spacing: 30) {
                     Spacer()
@@ -25,7 +24,7 @@ struct CongratulationsView: View {
                         .font(.system(size: 32, weight: .bold, design: .rounded))
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
-                        .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 8)
+                        .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 8)
                     
                     Text(bodyText)
                         .font(.system(size: 20, weight: .regular))
