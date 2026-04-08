@@ -15,14 +15,74 @@
 
 import SwiftUI
 
+struct FlowLayout: Layout {
+    var spacing: CGFloat = 8
+ 
+    func sizeThatFits(
+        proposal: ProposedViewSize,
+        subviews: Subviews,
+        cache: inout ()
+    ) -> CGSize {
+        let maxWidth = proposal.width ?? 0
+        var currentX: CGFloat = 0
+        var currentY: CGFloat = 0
+        var rowHeight: CGFloat = 0
+ 
+        for subview in subviews {
+            let size = subview.sizeThatFits(.unspecified)
+ 
+            // Kalau tidak muat di baris ini, pindah ke baris baru
+            if currentX + size.width > maxWidth, currentX > 0 {
+                currentX = 0
+                currentY += rowHeight + spacing
+                rowHeight = 0
+            }
+ 
+            currentX += size.width + spacing
+            rowHeight = max(rowHeight, size.height)
+        }
+ 
+        return CGSize(width: maxWidth, height: currentY + rowHeight)
+    }
+ 
+    func placeSubviews(
+        in bounds: CGRect,
+        proposal: ProposedViewSize,
+        subviews: Subviews,
+        cache: inout ()
+    ) {
+        var currentX = bounds.minX
+        var currentY = bounds.minY
+        var rowHeight: CGFloat = 0
+ 
+        for subview in subviews {
+            let size = subview.sizeThatFits(.unspecified)
+ 
+            if currentX + size.width > bounds.maxX, currentX > bounds.minX {
+                currentX = bounds.minX
+                currentY += rowHeight + spacing
+                rowHeight = 0
+            }
+ 
+            subview.place(
+                at: CGPoint(x: currentX, y: currentY),
+                proposal: .unspecified
+            )
+ 
+            currentX += size.width + spacing
+            rowHeight = max(rowHeight, size.height)
+        }
+    }
+}
+
 struct TagView: View {
     let tagName: String
     var body: some View {
         Text(tagName)
-            .font(.caption)
+            .font(.system(size: 20))
             .fontWeight(.medium)
-            .padding(.horizontal, 7)
-            .padding(.vertical, 9)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 10)
             .foregroundColor(.black) // Padding vertikal untuk tinggi
             .background(Color.white)
             .cornerRadius(15)        // Sudut tumpul agar berbentuk tag
@@ -30,18 +90,20 @@ struct TagView: View {
     }
 }
     
-struct BrokenView: View {
+struct SpotSimilarityP1View: View {
         let tags = ["Animal", "Arts ", "Beverage", "Blind Box", "Book", "Carrer", "Cars", "Exercise", "Fashion", "Food", "Invesment", "Movie", "Music", "Social Media", "Sports", "Studies", "Technology", "Travel","TV Show", "Video Game"]
         
         var body: some View {
             VStack {
                 NavigationStack {
                     ScrollView {
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 10) {
+                        FlowLayout(spacing: 10) {
                             ForEach(tags, id: \.self) { tag in
                                 TagView(tagName: tag)
                             }
                         }
+                        .padding(.top, 20)
+                        .padding(.horizontal, 16)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Image(systemName: "chevron.left")
@@ -54,17 +116,21 @@ struct BrokenView: View {
                             }
                             ToolbarItem(placement: .principal) {
                                 Text("Spot Similarities")
-                                    .font(.system(size: 15))
-                                    .foregroundStyle(Color.gray)
+                                    .font(.system(size: 15, weight: .medium))
+                                    .foregroundStyle(Color.black)
+                                    .padding(.top, 10)
                             }
                             ToolbarItem(placement: .subtitle) {
                                 Text("Player 1")
-                                    .font(.system(size: 30, weight: .bold))
+                                    .font(.system(size: 25, weight: .bold))
+                                    .padding(.top, 5)
                             }
-//                            ToolbarItem(placement: ) {
-//                                Text("Player 2")
-//                                    .font(.system(size: 30, weight: .bold))
-//                            }
+                            ToolbarItem(placement: .largeTitle) {
+                                Text("Choose Interests")
+                                    .font(.system(size: 20, weight: .medium))
+                                    .foregroundStyle(Color.gray)
+                                    .padding(.top, 10)
+                            }
                         }
                     }
                 }
@@ -74,6 +140,6 @@ struct BrokenView: View {
 
 
 #Preview {
-    BrokenView()
+    SpotSimilarityP1View()
 }
 
