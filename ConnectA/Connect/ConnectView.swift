@@ -38,17 +38,17 @@ struct ConnectView: View {
                         .italic()
                         .padding(.top, 10)
                     
-                    NavigationLink(destination: ClickToOpenView().navigationTitle("Get to Know the Basics")) {
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 1).navigationTitle("Get to Know the Basics")) {
                        ConnectButton(title: "Get to Know the Basics")
                     }
                     .buttonStyle(.plain)
                     
-                    NavigationLink(destination: ClickToOpenView().navigationTitle("Build Meaningful Connection")) {
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 2).navigationTitle("Explore Deeper Topics")) {
                        ConnectButton(title: "Explore Deeper Topics")
                     }
                     .buttonStyle(.plain)
                     
-                    NavigationLink(destination: ClickToOpenView()) {
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 3).navigationTitle("Build Meaningful Connection")) {
                       ConnectButton(title: "Build Meaningful Connection")
                     }
                     .buttonStyle(.plain)
@@ -78,12 +78,6 @@ private struct ConnectButton: View {
     }
 }
 
-// dummy
-struct ClickToOpenView: View {
-    var body: some View {
-        Text("Next View")
-    }
-}
 
 #Preview {
     ConnectView()
