@@ -59,5 +59,11 @@ class SimilarityViewModel: ObservableObject {
     func reset() {
         player1SelectedTags = []
         player2SelectedTags = []
+        selectedTags = []
+    }
+    
+    func computeSimilarity() {
+        let similarCategories = player1SelectedTags.intersection(player2SelectedTags)
+        selectedTags = Set(allTags.filter { similarCategories.contains($0.category) })
     }
 }
