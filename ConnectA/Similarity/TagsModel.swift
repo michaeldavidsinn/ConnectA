@@ -10,9 +10,4 @@ struct Tag: Codable, Identifiable, Hashable {
     let id = UUID()
     let category: String
     let questions: [String]
-
-    enum CodingKeys: String, CodingKey {
-        case category
-        case questions
-    }
 }
