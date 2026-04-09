@@ -10,7 +10,10 @@ import SwiftUI
 struct TagButton: View {
     let title: String
     let onTap: () -> Void
-    
+    let background: AnyShapeStyle
+    let color: AnyShapeStyle
+    var isSelected: Bool = false
+
     var body: some View {
         Button(action: {
             print("\(title) tapped")
@@ -18,18 +21,17 @@ struct TagButton: View {
         }) {
             Text(title)
                 .font(.system(size: 16, weight: .medium))
-                .foregroundColor(.white)
+                .foregroundStyle(isSelected ? AnyShapeStyle(Color.white) : color)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 16)
-                .background(
-                    LinearGradient(
-                        colors: [Color.blue, Color.blue.opacity(0.8)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
+                .background(isSelected ? AnyShapeStyle(Color.blue) : background)
                 .cornerRadius(20)
+                .overlay(
+                    Capsule().stroke(.white.opacity(0.2), lineWidth: 1)
+                )
+                .glassEffect()
         }
+        
         .buttonStyle(.plain)
     }
 }
