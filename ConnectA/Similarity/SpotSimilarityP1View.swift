@@ -11,9 +11,14 @@ struct SpotSimilarityP1View: View {
     @Environment(\.dismiss) private var dismiss
     @State private var navigateToP2 = false
     @StateObject private var viewModel = SimilarityViewModel()
+    private let onFindSimilarity: () -> Void
     
-    init(viewModel: SimilarityViewModel = SimilarityViewModel()) {
+    init(
+        viewModel: SimilarityViewModel = SimilarityViewModel(),
+        onFindSimilarity: @escaping () -> Void = {}
+    ) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.onFindSimilarity = onFindSimilarity
     }
 
     var body: some View {
@@ -36,7 +41,7 @@ struct SpotSimilarityP1View: View {
                 .padding(.horizontal, 16)
             }
             .navigationDestination(isPresented: $navigateToP2) {
-                SpotSimilarityP2View(viewModel: viewModel)
+                SpotSimilarityP2View(viewModel: viewModel, onFindSimilarity: onFindSimilarity)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -90,6 +95,7 @@ struct SpotSimilarityP1View: View {
                 }
             }
         }
+        .presentationDetents([.large])
     }
 }
 
