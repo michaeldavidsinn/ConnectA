@@ -8,7 +8,53 @@
 import SwiftUI
 
 struct SimilarityModalView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
+    let tags: [String] = ["Arts and Crafts", "Fashion", "TV Show","LALLALALA", "lol","OIOIOIOIOIOIOIO"]
+    
+    let columns = [
+        GridItem(.adaptive(minimum: 120), spacing: 10)
+    ]
+    
     var body: some View {
-        Text("Hello, World!")
-    }
+        VStack(spacing: 20) {
+            
+            // Exit Button
+            HStack {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.black)
+                        .frame(width: 36, height: 36)
+                        .background(
+                            Circle()
+                                .fill(Color.gray.opacity(0.15))
+                        )
+                }
+                
+                Spacer()
+            }
+            .padding(.horizontal)
+            .padding(.top, 10)
+            
+            // Tag Buttons
+            TagsLayout(spacing: 10) {
+                ForEach(tags, id: \.self) { tag in
+                    TagButton(title: tag){
+                        dismiss()
+                    }
+                }
+            }
+            .padding(.horizontal)
+            
+            Spacer()
+        }
+        .presentationDetents([.medium])
+    }}
+
+#Preview {
+    SimilarityModalView()
 }
