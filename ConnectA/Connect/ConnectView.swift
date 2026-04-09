@@ -29,7 +29,7 @@ struct ConnectView: View {
                         .italic()
                     
                     NavigationLink(destination: SimilarityView().navigationTitle("Spot Similarities")) {
-                        PrimaryButton(title: "Spot Similarities")
+                    ConnectButton(title: "Spot Similarities")
                     }
                     .buttonStyle(.plain)
                     
@@ -38,18 +38,18 @@ struct ConnectView: View {
                         .italic()
                         .padding(.top, 10)
                     
-                    NavigationLink(destination: ClickToOpenView().navigationTitle("Get to Know the Basics")) {
-                        PrimaryButton(title: "Get to Know the Basics")
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 1).navigationTitle("Get to Know the Basics")) {
+                       ConnectButton(title: "Get to Know the Basics")
                     }
                     .buttonStyle(.plain)
                     
-                    NavigationLink(destination: ClickToOpenView().navigationTitle("Build Meaningful Connection")) {
-                        PrimaryButton(title: "Explore Deeper Topics")
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 2).navigationTitle("Explore Deeper Topics")) {
+                       ConnectButton(title: "Explore Deeper Topics")
                     }
                     .buttonStyle(.plain)
                     
-                    NavigationLink(destination: ClickToOpenView()) {
-                      PrimaryButton(title: "Build Meaningful Connection")
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 3).navigationTitle("Build Meaningful Connection")) {
+                      ConnectButton(title: "Build Meaningful Connection")
                     }
                     .buttonStyle(.plain)
                     
@@ -62,12 +62,23 @@ struct ConnectView: View {
     }
 }
 
-// dummy
-struct ClickToOpenView: View {
+//button
+private struct ConnectButton: View {
+    var title: String
+
     var body: some View {
-        Text("Next View")
+        Text(title)
+            .font(.headline)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 18)
+            .background(
+                Capsule()
+                    .fill(Color.blue)
+            )
     }
 }
+
 
 #Preview {
     ConnectView()
