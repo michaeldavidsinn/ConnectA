@@ -13,6 +13,7 @@ struct SimilarityView: View {
     @State private var showModal = false
     @State private var currentTag: Tag?
     @State private var currentQuestionIndex: Int = 0
+    @State private var navigateToP1 = false
     
     init(viewModel: SimilarityViewModel = SimilarityViewModel()) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -81,7 +82,11 @@ struct SimilarityView: View {
             
             //Button Reset Similarity
             Button(action: {
-                
+                viewModel.reset()
+                currentTag = nil
+                currentQuestionIndex = 0
+                navigateToP1 = true
+
             }) {
                 Text("Reset Interests")
                     .font(.headline)
@@ -96,10 +101,12 @@ struct SimilarityView: View {
             .padding(.horizontal)
             .padding(.bottom, 20)
             
-            
+        }
+        .sheet(isPresented: $navigateToP1) {
+            SpotSimilarityP1View()
         }
         .onAppear {
-            if currentTag == nil {
+            if currentTag == nil && !viewModel.selectedTags.isEmpty {
                 currentTag = viewModel.selectedTags.first
             }
         }
