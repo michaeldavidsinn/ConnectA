@@ -1,16 +1,11 @@
-//
-//  OpenedQuestionView.swift
-//  ConnectA
-//
-//  Created by Michael David Sin on 06/04/26.
-//
-
 import SwiftUI
 
 struct OpenedQuestionView: View {
-    let questionText = "Did you grow up around here, or somewhere completely different?"
     
     @Environment(\.dismiss) var dismiss
+    
+    @State private var viewModel = RandomQuestionViewModel()
+    
     
     var body: some View {
         NavigationStack {
@@ -26,13 +21,19 @@ struct OpenedQuestionView: View {
                             .frame(width: 310, height: 430)
                             .cornerRadius(10)
                             .offset(y: -35)
-
+                        
                         
                         VStack {
-                            Text(questionText)
-                                .font(.system(size: 22, weight: .medium, design: .rounded))
-                                .multilineTextAlignment(.center)
-                                .padding(40)
+                            
+                            if let question = viewModel.currentQuestion?.question {
+                                
+                                Text(question)
+                                    .font(.system(size: 22, weight: .medium, design: .rounded))
+                                    .multilineTextAlignment(.center)
+                                    .padding(40)
+                            } else {
+                                Text("Soal tidak ditemukan")
+                            }
                         }
                         .frame(width: 320, height: 220)
                         .background(Color.white)
@@ -41,7 +42,7 @@ struct OpenedQuestionView: View {
                         .offset(y: -30)
                     }
                     
-        
+                    
                     Spacer()
                     
                     Button(action: {
