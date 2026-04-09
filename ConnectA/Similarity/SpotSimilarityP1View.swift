@@ -9,22 +9,26 @@ import SwiftUI
 
 struct SpotSimilarityP1View: View {
     @Environment(\.dismiss) private var dismiss
-    @State var viewModel: SpotSimilarityViewModel
     @State private var navigateToP2 = false
+    @StateObject private var viewModel = SimilarityViewModel()
+    
+    init(viewModel: SimilarityViewModel = SimilarityViewModel()) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 TagsLayout(spacing: 10) {
-                    ForEach(viewModel.tags, id: \.self) { tag in
+                    ForEach(viewModel.allTags, id: \.self) { tag in
                         TagButton(
-                            title: tag,
+                            title: tag.category,
                             onTap: {
-                                viewModel.togglePlayer1Tag(tag)
+                                viewModel.togglePlayer1Tag(tag.category)
                             },
                             background: AnyShapeStyle(Color.white),
                             color: AnyShapeStyle(Color.black),
-                            isSelected: viewModel.isSelectedByPlayer1(tag)
+                            isSelected: viewModel.isSelectedByPlayer1(tag.category)
                         )
                     }
                 }
@@ -90,5 +94,5 @@ struct SpotSimilarityP1View: View {
 }
 
 #Preview {
-    SpotSimilarityP1View(viewModel: SpotSimilarityViewModel())
+    SpotSimilarityP1View(viewModel: SimilarityViewModel())
 }
