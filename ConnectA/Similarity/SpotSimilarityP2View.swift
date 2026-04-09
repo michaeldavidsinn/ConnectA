@@ -10,6 +10,15 @@ import SwiftUI
 struct SpotSimilarityP2View: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: SimilarityViewModel
+    private let onFindSimilarity: () -> Void
+
+    init(
+        viewModel: SimilarityViewModel,
+        onFindSimilarity: @escaping () -> Void = {}
+    ) {
+        self.viewModel = viewModel
+        self.onFindSimilarity = onFindSimilarity
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -38,7 +47,8 @@ struct SpotSimilarityP2View: View {
             }
 
             Button(action: {
-                // Navigate to result view
+                viewModel.computeSimilarity()
+                onFindSimilarity()
             }) {
                 Text("Find Similarity")
                     .font(.system(size: 20, weight: .semibold))
