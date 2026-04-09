@@ -50,7 +50,7 @@ struct CongratulationsView: View {
         // TOOLBAR DEFAULT
 //        .navigationTitle(navTitle)
 //        .navigationBarTitleDisplayMode(.inline)
-//        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true)
 //        .toolbar {
 //            ToolbarItem(placement: .navigationBarLeading) {
 //                Button(action: {

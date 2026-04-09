@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct RandomQuestionView: View {
+    
+    var selectedLevel: Int
+    
     @Environment(\.dismiss) var dismiss
     @State private var viewModel = RandomQuestionViewModel()
     @State private var isOpen = false
@@ -106,11 +109,15 @@ struct RandomQuestionView: View {
         .navigationDestination(isPresented: $viewModel.isFinished) {
             CongratulationsView(finishedLevel: viewModel.currentLevel)
         }
+        .onAppear {
+            // Pas halaman muncul, baru suruh VM siapin soal sesuai levelnya
+            viewModel.startLevel(selectedLevel)
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        RandomQuestionView()
+        RandomQuestionView(selectedLevel: 1)
     }
 }
