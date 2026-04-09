@@ -15,8 +15,6 @@ struct OpenedQuestionView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(uiColor: .systemGroupedBackground)
-                    .ignoresSafeArea()
                 
                 VStack {
                     
@@ -25,9 +23,10 @@ struct OpenedQuestionView: View {
                         
                         Image("OpenEnvelope")
                             .resizable()
-                            .scaledToFit()
-                            .frame(width: 270)
-                            .offset(y: -40)
+                            .frame(width: 310, height: 430)
+                            .cornerRadius(10)
+                            .offset(y: -35)
+
                         
                         VStack {
                             Text(questionText)
@@ -42,7 +41,7 @@ struct OpenedQuestionView: View {
                         .offset(y: -30)
                     }
                     
-                    
+        
                     Spacer()
                     
                     Button(action: {
