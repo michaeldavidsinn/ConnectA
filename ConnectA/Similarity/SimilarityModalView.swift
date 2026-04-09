@@ -43,9 +43,19 @@ struct SimilarityModalView: View {
             // Tag Buttons
             TagsLayout(spacing: 10) {
                 ForEach(tags, id: \.self) { tag in
-                    TagButton(title: tag){
-                        dismiss()
-                    }
+                    TagButton(
+                        title: tag,
+                        onTap: {
+                            dismiss()
+                        },
+                        background: AnyShapeStyle(
+                            LinearGradient(
+                                colors: [.blue],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        ), color: AnyShapeStyle(.white)
+                    )
                 }
             }
             .padding(.horizontal)

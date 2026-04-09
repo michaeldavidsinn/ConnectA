@@ -6,59 +6,82 @@
 //
 
 import SwiftUI
-    
+
 struct SpotSimilarityP2View: View {
-        let tags = ["Animal", "Arts ", "Beverage", "Blind Box", "Book", "Carrer", "Cars", "Exercise", "Fashion", "Food", "Invesment", "Movie", "Music", "Social Media", "Sports", "Studies", "Technology", "Travel","TV Show", "Video Game"]
-        
-        var body: some View {
-            VStack {
-                NavigationStack {
-                    ScrollView {
-                        FlowLayout(spacing: 10) {
-                            ForEach(tags, id: \.self) { tag in
-                                TagView(tagName: tag)
-                            }
-                        }
-                        .padding(.top, 20)
-                        .padding(.horizontal, 16)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Image(systemName: "chevron.left")
-                                Text("Tombol Back")
-                            }
-                            ToolbarItem(placement: .principal) {
-                                Text("Spot Similarities")
-                                    .font(.system(size: 15, weight: .medium))
-                                    .foregroundStyle(Color.black)
-                                    .padding(.top, 10)
-                            }
-                            ToolbarItem(placement: .subtitle) {
-                                Text("Player 2")
-                                    .font(.system(size: 25, weight: .bold))
-                                    .padding(.top, 5)
-                            }
-                            ToolbarItem(placement: .largeTitle) {
-                                Text("Choose Interests")
-                                    .font(.system(size: 20, weight: .medium))
-                                    .foregroundStyle(Color.gray)
-                                    .padding(.top, 10)
-                            }
-                        }
+    @Environment(\.dismiss) private var dismiss
+    @State var viewModel: SpotSimilarityViewModel
+
+    var body: some View {
+        VStack(spacing: 0) {
+            ScrollView {
+                TagsLayout(spacing: 10) {
+                    ForEach(viewModel.tags, id: \.self) { tag in
+                        TagButton(
+                            title: tag,
+                            onTap: {
+                                viewModel.togglePlayer2Tag(tag)
+                            },
+                            background: AnyShapeStyle(
+                                LinearGradient(
+                                    colors: [.white],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            ),
+                            color: AnyShapeStyle(Color.black),
+                            isSelected: viewModel.isSelectedByPlayer2(tag)
+                        )
                     }
-                    Button("Find Similarity") {
-                    }
+                }
+                .padding(.top, 20)
+                .padding(.horizontal, 16)
+            }
+
+            Button(action: {
+                // Navigate to result view
+            }) {
+                Text("Find Similarity")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.white)
                     .frame(width: 200, height: 60)
-                    .background(Color.gray)
+                    .background(viewModel.isPlayer2Ready ? Color.blue : Color.gray)
                     .cornerRadius(50)
-                    .padding(.bottom, 30)
+            }
+            .disabled(!viewModel.isPlayer2Ready)
+            .padding(.bottom, 30)
+            .padding(.top, 16)
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: { dismiss() }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(Color.black)
                 }
+            }
+            ToolbarItem(placement: .principal) {
+                Text("Spot Similarities")
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundStyle(Color.black)
+                    .padding(.top, 30)
+            }
+            ToolbarItem(placement: .subtitle) {
+                Text("Player 2")
+                    .font(.system(size: 30, weight: .bold))
+                    .padding(.top, 5)
+            }
+            ToolbarItem(placement: .largeTitle) {
+                Text("Choose Interests")
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundStyle(Color.gray)
+                    .padding(.top, 30)
             }
         }
     }
-
+}
 
 #Preview {
-    SpotSimilarityP2View()
+    NavigationStack {
+        SpotSimilarityP2View(viewModel: SpotSimilarityViewModel())
+    }
 }
