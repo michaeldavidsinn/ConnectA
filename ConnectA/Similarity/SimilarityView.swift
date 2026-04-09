@@ -52,7 +52,7 @@ struct SimilarityView: View {
                 .disabled(currentQuestionIndex == 0)
                 
                 //Question card
-                Text(currentTag?.questions[safe: currentQuestionIndex] ?? "Edit your interests first to get similarity!")
+                Text(currentTag?.questions[currentQuestionIndex] ?? "Edit your interests first to get similarity!")
                     .font(.title3)
                     .multilineTextAlignment(.center)
                     .padding()
@@ -102,9 +102,17 @@ struct SimilarityView: View {
             .padding(.bottom, 20)
             
         }
-        .sheet(isPresented: $navigateToP1) {
-            SpotSimilarityP1View()
+        .sheet(isPresented: $navigateToP1, onDismiss: {
+            currentTag = viewModel.selectedTags.first
+            currentQuestionIndex = 0
+        }) {
+            SpotSimilarityP1View(viewModel: viewModel, onFindSimilarity: {
+                navigateToP1 = false
+                currentTag = viewModel.selectedTags.first
+                currentQuestionIndex = 0
+            })
         }
+
         .onAppear {
             if currentTag == nil && !viewModel.selectedTags.isEmpty {
                 currentTag = viewModel.selectedTags.first
@@ -123,75 +131,50 @@ struct SimilarityView: View {
     }
 }
 
-extension SimilarityView {
-    
-    func loadDummyData() {
-        // Dummy allTags (anggap dari JSON)
-        let dummyTags: [Tag] = [
-            Tag(category: "Blind Box", questions: [
-                "What is your favourite blind box series?",
-                "Do you ever get any secrets?",
-                "What do you do with your blind boxes?"
-            ]),
-            Tag(category: "Career", questions: [
-                "Passion first or security first?",
-                "Tell me about your job!"
-            ]),
-            Tag(category: "Food", questions: [
-                "Spicy or non-spicy?",
-                "Favorite cuisine?"
-            ])
-        ]
-        
-        viewModel.allTags = dummyTags
-        
-        // Dummy selected tags (SET)
-        viewModel.selectedTags = [
-            dummyTags[0],
-            dummyTags[2]
-        ]
-        
-        // Ambil salah satu sebagai active
-        currentTag = viewModel.selectedTags.first
-    }
-}
-
-extension Array {
-    subscript(safe index: Int) -> Element? {
-        indices.contains(index) ? self[index] : nil
-    }
-}
+//extension SimilarityView {
+//    
+//    func loadDummyData() {
+//        // Dummy allTags (anggap dari JSON)
+//        let dummyTags: [Tag] = [
+//            Tag(category: "Blind Box", questions: [
+//                "What is your favourite blind box series?",
+//                "Do you ever get any secrets?",
+//                "What do you do with your blind boxes?"
+//            ]),
+//            Tag(category: "Career", questions: [
+//                "Passion first or security first?",
+//                "Tell me about your job!"
+//            ]),
+//            Tag(category: "Food", questions: [
+//                "Spicy or non-spicy?",
+//                "Favorite cuisine?"
+//            ])
+//        ]
+//        
+//        viewModel.allTags = dummyTags
+//        
+//        // Dummy selected tags (SET)
+//        viewModel.selectedTags = [
+//            dummyTags[0],
+//            dummyTags[2]
+//        ]
+//        
+//        // Ambil salah satu sebagai active
+//        currentTag = viewModel.selectedTags.first
+//    }
+//}
+//
+//extension Array {
+//    subscript(safe index: Int) -> Element? {
+//        indices.contains(index) ? self[index] : nil
+//    }
+//}
 
 //#Preview {
 //    SimilarityView()
 //}
 
 #Preview {
-    let vm = SimilarityViewModel()
-    
-    // Override allTags (biar tidak tergantung JSON file)
-    let dummyTags: [Tag] = [
-        Tag(category: "Blind Box", questions: [
-            "What is your favourite blind box series?",
-            "Do you ever get any secrets?"
-        ]),
-        Tag(category: "Food", questions: [
-            "Spicy or non-spicy?",
-            "Favorite cuisine?"
-        ]),
-        Tag(category: "Travel", questions: [
-            "Planner or spontaneous?",
-            "Dream destination?"
-        ])
-    ]
-    
-    vm.allTags = dummyTags
-    
-    //  Dummy selectedTags (subset)
-    vm.selectedTags = [
-        dummyTags[0],
-        dummyTags[2]
-    ]
-    
-    return SimilarityView(viewModel: vm)
+
+    return SimilarityView()
 }
