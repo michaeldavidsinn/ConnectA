@@ -28,8 +28,8 @@ struct ConnectView: View {
                         .font(.headline)
                         .italic()
                     
-                    NavigationLink(destination: SimilarityView()) {
-                        PrimaryButton(title: "Start Easy, No Pressure")
+                    NavigationLink(destination: SimilarityView().navigationTitle("Spot Similarities")) {
+                        PrimaryButton(title: "Spot Similarities")
                     }
                     .buttonStyle(.plain)
                     
@@ -38,12 +38,12 @@ struct ConnectView: View {
                         .italic()
                         .padding(.top, 10)
                     
-                    NavigationLink(destination: ClickToOpenView()) {
+                    NavigationLink(destination: ClickToOpenView().navigationTitle("Get to Know the Basics")) {
                         PrimaryButton(title: "Get to Know the Basics")
                     }
                     .buttonStyle(.plain)
                     
-                    NavigationLink(destination: ClickToOpenView()) {
+                    NavigationLink(destination: ClickToOpenView().navigationTitle("Build Meaningful Connection")) {
                         PrimaryButton(title: "Explore Deeper Topics")
                     }
                     .buttonStyle(.plain)
@@ -62,8 +62,7 @@ struct ConnectView: View {
     }
 }
 
-//dummy
-
+// dummy
 struct ClickToOpenView: View {
     var body: some View {
         Text("Next View")
