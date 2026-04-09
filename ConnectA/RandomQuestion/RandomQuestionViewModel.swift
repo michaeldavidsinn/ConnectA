@@ -9,6 +9,20 @@ class RandomQuestionViewModel {
     var playingQuestions: [RandomQuestion] = []
     var currentQuestion: RandomQuestion?
     var currentLevel: Int = 1
+    
+    var levelTitle: String {
+        switch currentLevel {
+        case 1:
+            return "Get to Know the Basics"
+        case 2:
+            return "Explore Deeper Topics"
+        case 3:
+            return "Build Meaningful Connection"
+        default:
+            return "ConnectA"
+        }
+    }
+    
     var isFinished: Bool = false
     
     init() {
@@ -26,7 +40,7 @@ class RandomQuestionViewModel {
             }
         }
     }
-
+    
     // dari menu page baru pencet level
     func startLevel(_ level: Int) {
         self.currentLevel = level
@@ -34,38 +48,22 @@ class RandomQuestionViewModel {
         prepareLevel()
         nextQuestion()
     }
-
+    
     // ambil soal sesuai level
     private func prepareLevel() {
-       
+        
         self.playingQuestions = allQuestions.filter { $0.level == currentLevel }
     }
-
+    
     // lanjut next question
     func nextQuestion() {
         
-        // kalo question abis
+        //questionnya uda abis ato blm
         if playingQuestions.isEmpty {
-            // kalo level dibawah 3
-            if currentLevel < 3 {
-               
-                currentLevel += 1
-                prepareLevel()
-                
-                // kalo level masih ada soalnya
-                if !playingQuestions.isEmpty {
-                    pickRandom()
-                } else {
-                    // kalo level2nya memang udah gada soal lagi
-                    self.isFinished = true
-                }
-            } else {
-               
-                // uda level 3 + soal abis
-                self.isFinished = true
-            }
+            // kalo uda abis, langsung finish
+            self.isFinished = true
         } else {
-            
+            // kalo masih ada, cari question baru
             pickRandom()
         }
     }
