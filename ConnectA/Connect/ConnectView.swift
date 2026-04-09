@@ -23,12 +23,13 @@ struct ConnectView: View {
                         .frame(width: 100, height: 100)
                         .frame(maxWidth: .infinity)
                     
+                    
                     Text("Find what connects you")
                         .font(.headline)
                         .italic()
                     
                     NavigationLink(destination: SimilarityView()) {
-                        ConnectButton(title: "Start Easy, No Pressure")
+                        PrimaryButton(title: "Start Easy, No Pressure")
                     }
                     .buttonStyle(.plain)
                     
@@ -38,17 +39,17 @@ struct ConnectView: View {
                         .padding(.top, 10)
                     
                     NavigationLink(destination: ClickToOpenView()) {
-                        ConnectButton(title: "Get to Know the Basics")
+                        PrimaryButton(title: "Get to Know the Basics")
                     }
                     .buttonStyle(.plain)
                     
                     NavigationLink(destination: ClickToOpenView()) {
-                        ConnectButton(title: "Explore Deeper Topics")
+                        PrimaryButton(title: "Explore Deeper Topics")
                     }
                     .buttonStyle(.plain)
                     
                     NavigationLink(destination: ClickToOpenView()) {
-                        ConnectButton(title: "Build Meaningful Connection")
+                      PrimaryButton(title: "Build Meaningful Connection")
                     }
                     .buttonStyle(.plain)
                     

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ConnectButton: View {
+struct PrimaryButton: View {
     var title: String
     
     var body: some View {
@@ -25,4 +25,5 @@ struct ConnectButton: View {
             )
     }
 }
+
 
