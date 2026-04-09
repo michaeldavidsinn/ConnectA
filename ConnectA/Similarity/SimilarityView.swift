@@ -103,9 +103,15 @@ struct SimilarityView: View {
                 currentTag = viewModel.selectedTags.first
             }
         }
+        .onChange(of: currentTag) {
+            currentQuestionIndex = 0
+        }
         .padding()
         .sheet(isPresented: $showModal) {
-            SimilarityModalView()
+            SimilarityModalView(
+                selectedTags: Array(viewModel.selectedTags),
+                currentTag: $currentTag
+            )
         }
     }
 }
