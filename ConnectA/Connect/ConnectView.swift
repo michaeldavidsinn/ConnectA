@@ -62,6 +62,7 @@ struct ConnectView: View {
     }
 }
 
+//button
 private struct ConnectButton: View {
     var title: String
 
