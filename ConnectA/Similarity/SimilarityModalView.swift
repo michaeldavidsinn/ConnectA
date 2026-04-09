@@ -11,7 +11,8 @@ struct SimilarityModalView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    let tags: [String] = ["Arts and Crafts", "Fashion", "TV Show","LALLALALA", "lol","OIOIOIOIOIOIOIO"]
+    let selectedTags: [Tag]
+    @Binding var currentTag: Tag?
     
     let columns = [
         GridItem(.adaptive(minimum: 120), spacing: 10)
@@ -66,5 +67,11 @@ struct SimilarityModalView: View {
     }}
 
 #Preview {
-    SimilarityModalView()
+    SimilarityModalView(
+        selectedTags: [
+            Tag(category: "Food", questions: ["Q1"]),
+            Tag(category: "Travel", questions: ["Q2"])
+        ],
+        currentTag: .constant(nil)
+    )
 }
