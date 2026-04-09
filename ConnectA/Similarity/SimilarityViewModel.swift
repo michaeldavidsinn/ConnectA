@@ -10,4 +10,12 @@ import Combine
 class SimilarityViewModel: ObservableObject {
     @Published var allTags: [Tag] = []
     @Published var selectedTags: Set<Tag> = []
+    
+    init() {
+        loadTags()
+    }
+    
+    func loadTags() {
+        allTags = loadTagsFromJSON()
+    }
 }

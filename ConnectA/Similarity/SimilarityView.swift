@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct SimilarityView: View {
+    @StateObject private var viewModel = SimilarityViewModel()
+    
     @State private var showModal = false
+    @State private var currentTag: Tag?
+    @State private var currentQuestionIndex: Int = 0
+    
+    init(viewModel: SimilarityViewModel = SimilarityViewModel()) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     var body: some View {
         VStack {
             
@@ -21,13 +29,11 @@ struct SimilarityView: View {
             Button(action: {
                 showModal = true
             }) {
-                Text("Still None...").foregroundColor(.white)
+                Text(currentTag?.category ?? "Still None...").foregroundColor(.white)
                     .padding(.horizontal, 30)
-                    .padding(.vertical, 12).background(
-                        Color.gray
-                    )
+                    .padding(.vertical, 12).background(currentTag != nil ? Color.blue : Color.gray)
                     .clipShape(Capsule())
-                .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)}.disabled(false)
+                .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)}.disabled(false).disabled(viewModel.selectedTags.isEmpty)
             
             Spacer()
             
@@ -35,13 +41,17 @@ struct SimilarityView: View {
             HStack {
                 //Left button
                 Button(action: {
-                    print("Chevron Left Tapped")
+                    if currentQuestionIndex > 0 {
+                        currentQuestionIndex -= 1
+                    }
                 }) {
-                    Image(systemName: "chevron.left").foregroundColor(.gray)
-                }.disabled(true)
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(currentQuestionIndex == 0 ? Color.gray : Color.black)
+                }
+                .disabled(currentQuestionIndex == 0)
                 
                 //Question card
-                Text("Edit your interests first to get similarity!")
+                Text(currentTag?.questions[safe: currentQuestionIndex] ?? "Edit your interests first to get similarity!")
                     .font(.title3)
                     .multilineTextAlignment(.center)
                     .padding()
@@ -53,17 +63,25 @@ struct SimilarityView: View {
                 
                 //Right Button
                 Button(action: {
-                    print("Chevron Right Tapped")
+                    if let tag = currentTag,
+                       currentQuestionIndex < tag.questions.count - 1 {
+                        currentQuestionIndex += 1
+                    }
                 }) {
-                    Image(systemName: "chevron.right").foregroundColor(.gray)
-                }.disabled(true)
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(currentQuestionIndex >= (currentTag?.questions.count ?? 0) - 1 ? Color.gray : Color.black)
+                }
+                .disabled(
+                    currentTag == nil ||
+                    currentQuestionIndex >= (currentTag?.questions.count ?? 0) - 1
+                )
             }
             
             Spacer()
             
             //Button Reset Similarity
             Button(action: {
-
+                
             }) {
                 Text("Reset Interests")
                     .font(.headline)
@@ -80,6 +98,11 @@ struct SimilarityView: View {
             
             
         }
+        .onAppear {
+            if currentTag == nil {
+                currentTag = viewModel.selectedTags.first
+            }
+        }
         .padding()
         .sheet(isPresented: $showModal) {
             SimilarityModalView()
@@ -87,6 +110,75 @@ struct SimilarityView: View {
     }
 }
 
+extension SimilarityView {
+    
+    func loadDummyData() {
+        // Dummy allTags (anggap dari JSON)
+        let dummyTags: [Tag] = [
+            Tag(category: "Blind Box", questions: [
+                "What is your favourite blind box series?",
+                "Do you ever get any secrets?",
+                "What do you do with your blind boxes?"
+            ]),
+            Tag(category: "Career", questions: [
+                "Passion first or security first?",
+                "Tell me about your job!"
+            ]),
+            Tag(category: "Food", questions: [
+                "Spicy or non-spicy?",
+                "Favorite cuisine?"
+            ])
+        ]
+        
+        viewModel.allTags = dummyTags
+        
+        // Dummy selected tags (SET)
+        viewModel.selectedTags = [
+            dummyTags[0],
+            dummyTags[2]
+        ]
+        
+        // Ambil salah satu sebagai active
+        currentTag = viewModel.selectedTags.first
+    }
+}
+
+extension Array {
+    subscript(safe index: Int) -> Element? {
+        indices.contains(index) ? self[index] : nil
+    }
+}
+
+//#Preview {
+//    SimilarityView()
+//}
+
 #Preview {
-    SimilarityView()
+    let vm = SimilarityViewModel()
+    
+    // Override allTags (biar tidak tergantung JSON file)
+    let dummyTags: [Tag] = [
+        Tag(category: "Blind Box", questions: [
+            "What is your favourite blind box series?",
+            "Do you ever get any secrets?"
+        ]),
+        Tag(category: "Food", questions: [
+            "Spicy or non-spicy?",
+            "Favorite cuisine?"
+        ]),
+        Tag(category: "Travel", questions: [
+            "Planner or spontaneous?",
+            "Dream destination?"
+        ])
+    ]
+    
+    vm.allTags = dummyTags
+    
+    //  Dummy selectedTags (subset)
+    vm.selectedTags = [
+        dummyTags[0],
+        dummyTags[2]
+    ]
+    
+    return SimilarityView(viewModel: vm)
 }
