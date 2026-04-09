@@ -63,11 +63,6 @@ struct ConnectView: View {
 }
 
 //dummy
-struct SimilarityView: View {
-    var body: some View {
-        Text("Similarity View")
-    }
-}
 
 struct ClickToOpenView: View {
     var body: some View {
