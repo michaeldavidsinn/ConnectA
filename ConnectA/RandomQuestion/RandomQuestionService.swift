@@ -12,6 +12,6 @@ class RandomQuestionService {
                 print("Error decoding JSON: \(error)")
             }
         }
-        return [] 
+        return []
     }
 }

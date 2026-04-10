@@ -11,7 +11,8 @@ struct SimilarityModalView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    let tags: [String] = ["Arts and Crafts", "Fashion", "TV Show","LALLALALA", "lol","OIOIOIOIOIOIOIO"]
+    let selectedTags: [Tag]
+    @Binding var currentTag: Tag?
     
     let columns = [
         GridItem(.adaptive(minimum: 120), spacing: 10)
@@ -42,10 +43,16 @@ struct SimilarityModalView: View {
             
             // Tag Buttons
             TagsLayout(spacing: 10) {
-                ForEach(tags, id: \.self) { tag in
-                    TagButton(title: tag){
-                        dismiss()
-                    }
+                ForEach(selectedTags) { tag in
+                    TagButton(
+                        title: tag.category,
+                        onTap: {
+                            currentTag = tag
+                            dismiss()
+                        },
+                        background: AnyShapeStyle(Color.blue),
+                        color: AnyShapeStyle(Color.white)
+                    )
                 }
             }
             .padding(.horizontal)
@@ -56,5 +63,11 @@ struct SimilarityModalView: View {
     }}
 
 #Preview {
-    SimilarityModalView()
+    SimilarityModalView(
+        selectedTags: [
+            Tag(category: "Food", questions: ["Q1"]),
+            Tag(category: "Travel", questions: ["Q2"])
+        ],
+        currentTag: .constant(nil)
+    )
 }

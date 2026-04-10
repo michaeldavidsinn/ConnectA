@@ -6,7 +6,6 @@ struct ConnectView: View {
         NavigationStack {
             
             AppBackground {
-                
                     VStack(alignment: .leading, spacing: 20) {
                         
                         VStack(alignment: .leading, spacing: 6) {
@@ -15,7 +14,7 @@ struct ConnectView: View {
                             
                             Text("Get to know, step by step")
                                 .font(.subheadline)
-                                .foregroundStyle(.gray)
+                                .foregroundStyle(.black)
                         }
                         .padding(.top, 5)
                         
@@ -29,7 +28,7 @@ struct ConnectView: View {
                             .font(.headline)
                             .italic()
                         
-                        NavigationLink(destination: SimilarityView()) {
+                        NavigationLink(destination: SimilarityView().navigationTitle("Spot Similarities")) {
                             ConnectButton(title: "Spot Similarities")
                         }
                         .buttonStyle(.plain)
@@ -39,17 +38,17 @@ struct ConnectView: View {
                             .italic()
                             .padding(.top, 10)
                         
-                        NavigationLink(destination: RandomQuestionView(selectedLevel: 1)) {
+                        NavigationLink(destination: RandomQuestionView(selectedLevel: 1).navigationTitle("Get to Know the Basics")) {
                             ConnectButton(title: "Get to Know the Basics")
                         }
                         .buttonStyle(.plain)
                         
-                        NavigationLink(destination: RandomQuestionView(selectedLevel: 2)) {
+                        NavigationLink(destination: RandomQuestionView(selectedLevel: 2).navigationTitle("Explore Deeper Topics")) {
                             ConnectButton(title: "Explore Deeper Topics")
                         }
                         .buttonStyle(.plain)
                         
-                        NavigationLink(destination: RandomQuestionView(selectedLevel: 3)) {
+                        NavigationLink(destination: RandomQuestionView(selectedLevel: 3).navigationTitle("Build Meaningful Connection")) {
                             ConnectButton(title: "Build Meaningful Connection")
                         }
                         .buttonStyle(.plain)
