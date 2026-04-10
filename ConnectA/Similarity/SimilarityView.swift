@@ -50,6 +50,7 @@ struct SimilarityView: View {
                         .foregroundColor(currentQuestionIndex == 0 ? Color.gray : Color.black)
                 }
                 .disabled(currentQuestionIndex == 0)
+                Spacer()
                 
                 //Question card
                 Text(currentTag?.questions[currentQuestionIndex] ?? "Edit your interests first to get similarity!")
@@ -61,6 +62,7 @@ struct SimilarityView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 25))
                     .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 4)
                     .padding(.horizontal)
+                Spacer()
                 
                 //Right Button
                 Button(action: {
