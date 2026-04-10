@@ -92,6 +92,12 @@ struct RandomQuestionView: View {
                                         .offset(y: 50)
                                         .transition(.move(edge: .bottom).combined(with: .opacity))
                                     }
+                                    .frame(width: 300, height: 200)
+                                    .background(Color.white)
+                                    .cornerRadius(20)
+                                    .shadow(radius: 10)
+                                    .offset(y: 50)
+                                    .transition(.move(edge: .bottom).combined(with: .opacity))
                                 }
                             }
                         }
