@@ -1,164 +1,13 @@
 [
   {
-    "category": "Blind Box",
+    "category": "Animal",
     "questions": [
-      "Beside Pop Mart, which blind box selling store do you like?",
-      "What is your favourite blind box series?",
-      "Tell me about your first time opening blind box!",
-      "Do you ever get any secrets?",
-      "What do you do with your blind boxes?",
-      "How do you feel about selling and buying selected blind box item?"
-    ]
-  },
-  {
-    "category": "Career",
-    "questions": [
-      "Stable job or something more dynamic?",
-      "Passion first or security first?",
-      "Tell me about your job!",
-      "What is your first job / gig?"
-    ]
-  },
-  {
-    "category": "Food",
-    "questions": [
-      "Do you prefer spicy or non-spicy?",
-      "Stick to favorites or try new food?",
-      "What is your most favorite cuisine?",
-      "What is your go to take away meal?"
-    ]
-  },
-  {
-    "category": "Travel",
-    "questions": [
-      "Planner or spontaneous traveler?",
-      "If you could go anywhere right now, where would you go?",
-      "What is your worst experience when traveling?",
-      "What is your dream travel destination?",
-      "Whom do you travel with?",
-      "What is your favourite mode of travel?"
-    ]
-  },
-  {
-    "category": "Music",
-    "questions": [
-      "What genres of music do you like?",
-      "Do you ever go to a concert? Which one is your favourite? What concert do you want to go to?",
-      "Listen to relax or to boost mood?",
-      "Do you actively follow any music artist?"
-    ]
-  },
-  {
-    "category": "Movie",
-    "questions": [
-      "Something light or something that makes you think?",
-      "Action/thriller or romance/comedy?",
-      "Do you read reviews before watching a movie?",
-      "What movie surprises you the most?",
-      "List me your top 3 movies of all time!",
-      "Pixar or Dreamworks?"
-    ]
-  },
-  {
-    "category": "TV Show",
-    "questions": [
-      "Binge-watch or casual watching?",
-      "Long series or short ones?",
-      "What TV show are you watching right now?",
-      "What TV show do you like the most?",
-      "Which animation series do you like the most?"
-    ]
-  },
-  {
-    "category": "Exercise",
-    "questions": [
-      "Gym or outdoors?",
-      "Workout alone or with friends?",
-      "What is your workout routine?",
-      "Why do you exercise? Do you have any target?"
-    ]
-  },
-  {
-    "category": "Book",
-    "questions": [
-      "Fiction or non-fiction?",
-      "Fast reader or slow reader?",
-      "What book surprised you the most?",
-      "Which book(s) bored you the most?",
-      "Do you have any experience reading/borrowing books in the library?",
-      "Where do you get your books?"
-    ]
-  },
-  {
-    "category": "Technology",
-    "questions": [
-      "Like trying new tech or sticking to what works?",
-      "Simple or advanced features?",
-      "Do you prioritize functionality or aesthetics?",
-      "Which upcoming tech are you most excited about? Will you buy it?",
-      "What is the most unique tech you own?",
-      "Which tech enthusiast do you follow?",
-      "Which tech do you regret buying?"
-    ]
-  },
-  {
-    "category": "Social Media",
-    "questions": [
-      "Do you post a lot?",
-      "What social media do you use?",
-      "Do you use social media for fun or staying connected?",
-      "What trend are you interested in right now?",
-      "Who is your favourite social media influencer?",
-      "What content do you usually post and repost?"
-    ]
-  },
-  {
-    "category": "Beverage",
-    "questions": [
-      "Which do you prefer? Coffee or tea?",
-      "What is your favourite beverage franchise?",
-      "What is your go to drink at a restaurant?",
-      "Do you like traditional drinks?",
-      "How often do you drink other beverages besides mineral water?"
-    ]
-  },
-  {
-    "category": "Investment",
-    "questions": [
-      "Risk-taker or play safe? Long-term or quick gains?",
-      "What investing instruments do you use?",
-      "Are you fundamentalist or technical?",
-      "What is your most profitable trade/investment?"
-    ]
-  },
-  {
-    "category": "College Major / Study",
-    "questions": [
-      "What major are you interested in besides your major?",
-      "Why did you decide on taking your major?",
-      "Are you good at remembering study materials?",
-      "What is your worst experience with your teacher?",
-      "Do you use AI when studying? If so, what AI?"
-    ]
-  },
-  {
-    "category": "Video Game",
-    "questions": [
-      "Competitive or chill games?",
-      "Who do you play video games with?",
-      "What is your favourite video game?",
-      "What is your nostalgic game that you always come back to play?",
-      "Are you a free-to-play player?"
-    ]
-  },
-  {
-    "category": "Fashion",
-    "questions": [
-      "Comfort or style?",
-      "Simple or expressive?",
-      "What is your favourite fashion brand?",
-      "Do you like going thrifting?",
-      "Do you know your skin tone? Warm/neutral/cold?"
+      "Dog person or cat person?",
+      "Active or low-maintenance pets?",
+      "Do you have any pets?",
+      "Do you like going to zoos and aquariums?",
+      "What is your spirit animal?",
+      "Tell me one animal fun fact!"
     ]
   },
   {
@@ -174,6 +23,47 @@
     ]
   },
   {
+    "category": "Beverage",
+    "questions": [
+      "Which do you prefer? Coffee or tea?",
+      "What is your favourite beverage franchise?",
+      "What is your go to drink at a restaurant?",
+      "Do you like traditional drinks?",
+      "How often do you drink other beverages besides mineral water?"
+    ]
+  },
+  {
+    "category": "Blind Box",
+    "questions": [
+      "Beside Pop Mart, which blind box selling store do you like?",
+      "What is your favourite blind box series?",
+      "Tell me about your first time opening blind box!",
+      "Do you ever get any secrets?",
+      "What do you do with your blind boxes?",
+      "How do you feel about selling and buying selected blind box item?"
+    ]
+  },
+  {
+    "category": "Book",
+    "questions": [
+      "Fiction or non-fiction?",
+      "Fast reader or slow reader?",
+      "What book surprised you the most?",
+      "Which book(s) bored you the most?",
+      "Do you have any experience reading/borrowing books in the library?",
+      "Where do you get your books?"
+    ]
+  },
+  {
+    "category": "Career",
+    "questions": [
+      "Stable job or something more dynamic?",
+      "Passion first or security first?",
+      "Tell me about your job!",
+      "What is your first job / gig?"
+    ]
+  },
+  {
     "category": "Cars",
     "questions": [
       "Performance or design?",
@@ -183,6 +73,84 @@
       "Can you drive a manual?",
       "When did you start learning how to drive?",
       "What is your first car?"
+    ]
+  },
+  {
+    "category": "College Major / Study",
+    "questions": [
+      "What major are you interested in besides your major?",
+      "Why did you decide on taking your major?",
+      "Are you good at remembering study materials?",
+      "What is your worst experience with your teacher?",
+      "Do you use AI when studying? If so, what AI?"
+    ]
+  },
+  {
+    "category": "Exercise",
+    "questions": [
+      "Gym or outdoors?",
+      "Workout alone or with friends?",
+      "What is your workout routine?",
+      "Why do you exercise? Do you have any target?"
+    ]
+  },
+  {
+    "category": "Fashion",
+    "questions": [
+      "Comfort or style?",
+      "Simple or expressive?",
+      "What is your favourite fashion brand?",
+      "Do you like going thrifting?",
+      "Do you know your skin tone? Warm/neutral/cold?"
+    ]
+  },
+  {
+    "category": "Food",
+    "questions": [
+      "Do you prefer spicy or non-spicy?",
+      "Stick to favorites or try new food?",
+      "What is your most favorite cuisine?",
+      "What is your go to take away meal?"
+    ]
+  },
+  {
+    "category": "Investment",
+    "questions": [
+      "Risk-taker or play safe? Long-term or quick gains?",
+      "What investing instruments do you use?",
+      "Are you fundamentalist or technical?",
+      "What is your most profitable trade/investment?"
+    ]
+  },
+  {
+    "category": "Movie",
+    "questions": [
+      "Something light or something that makes you think?",
+      "Action/thriller or romance/comedy?",
+      "Do you read reviews before watching a movie?",
+      "What movie surprises you the most?",
+      "List me your top 3 movies of all time!",
+      "Pixar or Dreamworks?"
+    ]
+  },
+  {
+    "category": "Music",
+    "questions": [
+      "What genres of music do you like?",
+      "Do you ever go to a concert? Which one is your favourite? What concert do you want to go to?",
+      "Listen to relax or to boost mood?",
+      "Do you actively follow any music artist?"
+    ]
+  },
+  {
+    "category": "Social Media",
+    "questions": [
+      "Do you post a lot?",
+      "What social media do you use?",
+      "Do you use social media for fun or staying connected?",
+      "What trend are you interested in right now?",
+      "Who is your favourite social media influencer?",
+      "What content do you usually post and repost?"
     ]
   },
   {
@@ -198,14 +166,46 @@
     ]
   },
   {
-    "category": "Animal",
+    "category": "Technology",
     "questions": [
-      "Dog person or cat person?",
-      "Active or low-maintenance pets?",
-      "Do you have any pets?",
-      "Do you like going to zoos and aquariums?",
-      "What is your spirit animal?",
-      "Tell me one animal fun fact!"
+      "Like trying new tech or sticking to what works?",
+      "Simple or advanced features?",
+      "Do you prioritize functionality or aesthetics?",
+      "Which upcoming tech are you most excited about? Will you buy it?",
+      "What is the most unique tech you own?",
+      "Which tech enthusiast do you follow?",
+      "Which tech do you regret buying?"
+    ]
+  },
+  {
+    "category": "Travel",
+    "questions": [
+      "Planner or spontaneous traveler?",
+      "If you could go anywhere right now, where would you go?",
+      "What is your worst experience when traveling?",
+      "What is your dream travel destination?",
+      "Whom do you travel with?",
+      "What is your favourite mode of travel?"
+    ]
+  },
+  {
+    "category": "TV Show",
+    "questions": [
+      "Binge-watch or casual watching?",
+      "Long series or short ones?",
+      "What TV show are you watching right now?",
+      "What TV show do you like the most?",
+      "Which animation series do you like the most?"
+    ]
+  },
+  {
+    "category": "Video Game",
+    "questions": [
+      "Competitive or chill games?",
+      "Who do you play video games with?",
+      "What is your favourite video game?",
+      "What is your nostalgic game that you always come back to play?",
+      "Are you a free-to-play player?"
     ]
   }
 ]
