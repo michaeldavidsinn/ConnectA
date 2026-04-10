@@ -1,10 +1,14 @@
 import SwiftUI
 
 extension Color {
-    static let appBackground = Color(red: 0xF2/255.0, green: 0xF2/255.0, blue: 0xF7/255.0)
+    static let appBackground = Color(
+        red: 242 / 255,
+        green: 242 / 255,
+        blue: 247 / 255
+    )
 }
 
-struct AppBackground: ViewModifier {
+struct AppBackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(Color.appBackground)
@@ -13,6 +17,6 @@ struct AppBackground: ViewModifier {
 
 extension View {
     func appBackground() -> some View {
-        self.modifier(AppBackground())
+        modifier(AppBackgroundModifier())
     }
 }

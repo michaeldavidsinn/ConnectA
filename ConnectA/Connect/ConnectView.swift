@@ -58,7 +58,7 @@ struct ConnectView: View {
                 .padding(20)
             }
         }
-        .appBackground() 
+       .appBackground()
     }
 }
 
