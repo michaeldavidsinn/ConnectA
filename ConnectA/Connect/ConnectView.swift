@@ -3,72 +3,83 @@ import SwiftUI
 struct ConnectView: View {
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                
-                // jduul
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Connect")
-                        .font(.system(size: 34, weight: .bold))
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
                     
-                    Text("Get to know, step by step")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Connect")
+                            .font(.system(size: 34, weight: .bold))
+                        
+                        Text("Get to know, step by step")
+                            .font(.subheadline)
+                            .foregroundStyle(.gray)
+                    }
+                    .padding(.top, 5)
+                    
+                    Image("CloseEnvelope")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .frame(maxWidth: .infinity)
+                    
+                    
+                    Text("Find what connects you")
+                        .font(.headline)
+                        .italic()
+                    
+                    NavigationLink(destination: SimilarityView().navigationTitle("Spot Similarities")) {
+                    ConnectButton(title: "Spot Similarities")
+                    }
+                    .buttonStyle(.plain)
+                    
+                    Text("Take it a step further")
+                        .font(.headline)
+                        .italic()
+                        .padding(.top, 10)
+                    
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 1).navigationTitle("Get to Know the Basics")) {
+                       ConnectButton(title: "Get to Know the Basics")
+                    }
+                    .buttonStyle(.plain)
+                    
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 2).navigationTitle("Explore Deeper Topics")) {
+                       ConnectButton(title: "Explore Deeper Topics")
+                    }
+                    .buttonStyle(.plain)
+                    
+                    NavigationLink(destination: RandomQuestionView(selectedLevel: 3).navigationTitle("Build Meaningful Connection")) {
+                      ConnectButton(title: "Build Meaningful Connection")
+                    }
+                    .buttonStyle(.plain)
+                    
+                    Spacer()
                 }
-                .padding(.top, 5)
-                
-                // amplop
-                Image("CloseEnvelope")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .frame(maxWidth: .infinity)
-                
-                // similarity
-                Text("Find what connects you")
-                    .font(.headline)
-                    .italic()
-                
-                ConnectButton(title: "Start Easy, No Pressure")
-                
-                // level 1,2,3
-                Text("Take it a step further")
-                    .font(.headline)
-                    .italic()
-                    .padding(.top, 10)
-                
-                ConnectButton(title: "Get to Know the Basics")
-                ConnectButton(title: "Explore Deeper Topics")
-                ConnectButton(title: "Build Meaningful Connection")
-                
-                Spacer()
+                .padding(20)
             }
-            .padding(20)
         }
-        .background(Color(.systemGray6))
+        .appBackground() 
     }
 }
 
-struct ConnectButton: View {
+//button
+private struct ConnectButton: View {
     var title: String
-    
+
     var body: some View {
-        Button {
-            // action
-        } label: {
-            Text(title)
-                .font(.headline)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.blue)
-                .clipShape(Capsule())
-        }
+        Text(title)
+            .font(.headline)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 18)
+            .background(
+                Capsule()
+                    .fill(Color.blue)
+            )
     }
 }
-#Preview{
+
+
+#Preview {
     ConnectView()
 }
-
-
-
