@@ -27,10 +27,6 @@ class SimilarityViewModel: ObservableObject {
     var isPlayer2Ready: Bool {
         !player2SelectedTags.isEmpty
     }
-        
-    var similarTags: [String] {
-        Array(player1SelectedTags.intersection(player2SelectedTags)).sorted()
-    }
 
     func togglePlayer1Tag(_ tag: String) {
         if player1SelectedTags.contains(tag) {
