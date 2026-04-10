@@ -122,8 +122,8 @@ struct SimilarityView: View {
         .padding()
         .sheet(isPresented: $showModal) {
             SimilarityModalView(
-                selectedTags: Array(viewModel.selectedTags),
-                currentTag: $currentTag
+                selectedTags: Array(viewModel.selectedTags).sorted { $0.category < $1.category },
+                        currentTag: $currentTag
             )
         }
     }
