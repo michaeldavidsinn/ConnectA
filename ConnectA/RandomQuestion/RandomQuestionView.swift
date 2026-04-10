@@ -101,8 +101,8 @@ struct RandomQuestionView: View {
                     if showCard {
                         Button(action: {
                             
-                            //                            showCard = false
-                            //                            isOpen = false
+                                                        showCard = false
+                                                        isOpen = false
                             
                             viewModel.nextQuestion()
                         }) {
