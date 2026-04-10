@@ -7,7 +7,6 @@ struct ConnectView: View {
             
             AppBackground {
                 
-                ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         
                         VStack(alignment: .leading, spacing: 6) {
@@ -59,7 +58,6 @@ struct ConnectView: View {
                     }
                     .padding(20)
                 }
-            }
         }
     }
 }
