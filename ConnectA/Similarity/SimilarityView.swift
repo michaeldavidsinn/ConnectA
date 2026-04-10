@@ -115,6 +115,11 @@ struct SimilarityView: View {
 
         .onAppear {
             if viewModel.selectedTags.isEmpty {
+                // kalau belum ada data → langsung buka flow P1
+                navigateToP1 = true
+            } else {
+                // kalau sudah ada → langsung buka modal pilih tag
+                showModal = true
                 currentTag = viewModel.selectedTags.first
             }
         }
