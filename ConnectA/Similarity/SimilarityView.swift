@@ -83,8 +83,6 @@ struct SimilarityView: View {
             //Button Reset Similarity
             Button(action: {
                 viewModel.reset()
-                currentTag = nil
-                currentQuestionIndex = 0
                 navigateToP1 = true
 
             }) {
@@ -114,7 +112,7 @@ struct SimilarityView: View {
         }
 
         .onAppear {
-            if currentTag == nil && !viewModel.selectedTags.isEmpty {
+            if viewModel.selectedTags.isEmpty {
                 currentTag = viewModel.selectedTags.first
             }
         }
