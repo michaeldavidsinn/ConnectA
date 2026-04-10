@@ -53,7 +53,7 @@ struct SimilarityView: View {
                 Spacer()
                 
                 //Question card
-                Text(currentTag?.questions[currentQuestionIndex] ?? "Edit your interests first to get similarity!")
+                Text(currentTag?.questions[safe: currentQuestionIndex] ?? "Edit your interests first to get similarity!")
                     .font(.title3)
                     .multilineTextAlignment(.center)
                     .padding()
@@ -133,6 +133,12 @@ struct SimilarityView: View {
                         currentTag: $currentTag
             )
         }.appBackground()
+    }
+}
+
+extension Array {
+    subscript(safe index: Int) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }
 
