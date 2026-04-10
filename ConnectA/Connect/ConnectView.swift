@@ -14,7 +14,7 @@ struct ConnectView: View {
                             
                             Text("Get to know, step by step")
                                 .font(.subheadline)
-                                .foregroundStyle(.gray)
+                                .foregroundStyle(.black)
                         }
                         .padding(.top, 5)
                         
