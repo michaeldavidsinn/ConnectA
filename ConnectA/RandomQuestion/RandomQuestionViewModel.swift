@@ -29,17 +29,12 @@ class RandomQuestionViewModel {
         loadQuestionsFromJSON()
     }
     
-    // import dri json
+    // import dari json
     private func loadQuestionsFromJSON() {
-        if let url = Bundle.main.url(forResource: "RandomQuestions", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                self.allQuestions = try JSONDecoder().decode([RandomQuestion].self, from: data)
-            } catch {
-                print("Error: \(error)")
-            }
-        }
+        
+        self.allQuestions = RandomQuestionService.loadQuestions()
     }
+    
     
     // dari menu page baru pencet level
     func startLevel(_ level: Int) {
