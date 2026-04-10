@@ -60,6 +60,7 @@ struct SimilarityModalView: View {
             Spacer()
         }
         .presentationDetents([.medium])
+        .appBackground()
     }}
 
 #Preview {

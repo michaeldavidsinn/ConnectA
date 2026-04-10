@@ -132,7 +132,7 @@ struct SimilarityView: View {
                 selectedTags: Array(viewModel.selectedTags).sorted { $0.category < $1.category },
                         currentTag: $currentTag
             )
-        }
+        }.appBackground()
     }
 }
 

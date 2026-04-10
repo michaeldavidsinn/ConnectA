@@ -112,7 +112,7 @@ struct RandomQuestionView: View {
         .onAppear {
             // Pas halaman muncul, baru suruh VM siapin soal sesuai levelnya
             viewModel.startLevel(selectedLevel)
-        }
+        }.appBackground()
     }
 }
 
