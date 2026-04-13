@@ -101,9 +101,9 @@ struct RandomQuestionView: View {
                         if showCard {
                             Button(action: {
                                 
-                                //                                                        showCard = false
-                                //                                                        isOpen = false
-                                //                            
+                                showCard = false
+                                isOpen = false
+                                
                                 viewModel.nextQuestion()
                             }) {
                                 Text("Next Question")
@@ -121,17 +121,6 @@ struct RandomQuestionView: View {
                 }
             }
         }
-        //        .navigationTitle(viewModel.levelTitle)
-        //        .navigationBarTitleDisplayMode(.inline)
-        //        .navigationBarBackButtonHidden(true)
-        //        .toolbar {
-        //            ToolbarItem(placement: .navigationBarLeading) {
-        //                Button(action: { dismiss() }) {
-        //                    Image(systemName: "chevron.left")
-        //                        .fontWeight(.bold)
-        //                }
-        //            }
-        //        }
         
         .onAppear {
             viewModel.startLevel(selectedLevel)
