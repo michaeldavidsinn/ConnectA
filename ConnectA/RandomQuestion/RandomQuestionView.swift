@@ -92,12 +92,6 @@ struct RandomQuestionView: View {
                                         .offset(y: 50)
                                         .transition(.move(edge: .bottom).combined(with: .opacity))
                                     }
-                                    .frame(width: 300, height: 200)
-                                    .background(Color.white)
-                                    .cornerRadius(20)
-                                    .shadow(radius: 10)
-                                    .offset(y: 50)
-                                    .transition(.move(edge: .bottom).combined(with: .opacity))
                                 }
                             }
                         }
@@ -107,9 +101,9 @@ struct RandomQuestionView: View {
                         if showCard {
                             Button(action: {
                                 
-                                //                                                        showCard = false
-                                //                                                        isOpen = false
-                                //                            
+                                showCard = false
+                                isOpen = false
+                                
                                 viewModel.nextQuestion()
                             }) {
                                 Text("Next Question")
@@ -127,17 +121,6 @@ struct RandomQuestionView: View {
                 }
             }
         }
-        //        .navigationTitle(viewModel.levelTitle)
-        //        .navigationBarTitleDisplayMode(.inline)
-        //        .navigationBarBackButtonHidden(true)
-        //        .toolbar {
-        //            ToolbarItem(placement: .navigationBarLeading) {
-        //                Button(action: { dismiss() }) {
-        //                    Image(systemName: "chevron.left")
-        //                        .fontWeight(.bold)
-        //                }
-        //            }
-        //        }
         
         .onAppear {
             viewModel.startLevel(selectedLevel)

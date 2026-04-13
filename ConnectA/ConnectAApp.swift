@@ -11,7 +11,7 @@ import SwiftUI
 struct ConnectAApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ConnectView()
         }
     }
 }
