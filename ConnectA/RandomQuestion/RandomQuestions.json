@@ -1,7 +1,6 @@
 [
   { "id": 1, "level": 1, "question": "Did you grow up around here, or somewhere completely different?" },
   { "id": 2, "level": 1, "question": "What brought you to this city?" },
-  { "id": 3, "level": 1, "question": "(Observation about your city or campus.) Have you noticed that, too?" },
   { "id": 4, "level": 1, "question": "What’s been the highlight of your week so far?" },
   { "id": 5, "level": 1, "question": "Have you discovered any cool spots in this neighborhood?" },
   { "id": 6, "level": 1, "question": "Do you have a go-to coffee or lunch spot?" },
@@ -31,9 +30,7 @@
   { "id": 30, "level": 1, "question": "Have you found it easy or challenging to meet new people here?" },
   { "id": 31, "level": 1, "question": "What do you think the best museum nearby is?" },
   { "id": 32, "level": 1, "question": "What do you think the best outdoor spot nearby is?" },
-  { "id": 33, "level": 1, "question": "Where do you go to buy (insert thing) around here?" },
   { "id": 34, "level": 1, "question": "What is your dream pet" },
-  { "id": 35, "level": 1, "question": "You seem like you might like (insert activity). Am I wrong?" },
   { "id": 36, "level": 2, "question": "What three words would you use to describe yourself?" },
   { "id": 37, "level": 2, "question": "What’s your favorite nickname someone has given you and how did you get it?" },
   { "id": 38, "level": 2, "question": "Do you believe in astrology? Why or why not?" },
